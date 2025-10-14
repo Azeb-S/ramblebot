@@ -1,3 +1,5 @@
+import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,14 +41,24 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
     // words and periods
     // I have reffer this website to check how to use the scanner and class
     // https://www.w3schools.com/java/java_user_input.asp
-    String inputWord = scanner.next().toLowerCase();
 
-    String[] lowerCaseSeparatedWords = inputWord.split("\\s+");
+    // inputWord = scanner.next().toLowerCase();
 
-    for (String lowerCaseSeparatedWord : lowerCaseSeparatedWords) {
-      System.err.println(lowerCaseSeparatedWord);
+    // List<String> lowerCaseSeparatedWords = new ArrayList<String>();
+
+    // lowerCaseSeparatedWords = inputWord.split("\\s+");
+    // for (String lowerCaseSeparatedWord : lowerCaseSeparatedWords) {
+    // System.out.println(lowerCaseSeparatedWord);
+    // }
+
+    List<String> inpuToken = new ArrayList<>();
+    scanner.useDelimiter("\\s");
+    while (scanner.hasNext()) {
+      String token = scanner.next();
+      // System.out.println(scanner.next());
+      inpuToken.add(token);
     }
 
-    return null;
+    return inpuToken;
   }
 }
