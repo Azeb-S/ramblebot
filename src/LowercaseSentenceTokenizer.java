@@ -54,7 +54,7 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
     List<String> inpuToken = new ArrayList<>();
     scanner.useDelimiter("\\s");
     while (scanner.hasNext()) {
-      String token = scanner.next();
+      String token = scanner.next().toLowerCase();
       // System.out.println(scanner.next());
       inpuToken.add(token);
     }
