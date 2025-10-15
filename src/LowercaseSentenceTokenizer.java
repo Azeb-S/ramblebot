@@ -45,10 +45,21 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
 
     List<String> inputToken = new ArrayList<>();
     scanner.useDelimiter("\\s+");
+    // scanner.useDelimiter("\\\\b|\\\\B");
+    String period = ".";
+    // for (String s : inputToken) {
     while (scanner.hasNext()) {
       String token = scanner.next().toLowerCase();
-      // System.out.println(scanner.next());
-      inputToken.add(token);
+
+      if (token.charAt(token.length() - 1) == '.') {
+
+        inputToken.add(token.replace(token.substring(token.length() - 1), ""));
+        inputToken.add(".");
+
+      } else {
+        inputToken.add(token);
+      }
+
     }
 
     return inputToken;
