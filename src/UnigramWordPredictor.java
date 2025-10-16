@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 /**
@@ -148,7 +149,31 @@ public class UnigramWordPredictor implements WordPredictor {
     // TODO: Return a predicted word given the words preceding it
     // Hint: only the last word in context should be looked at
 
-    return null;
+    /*
+     * - loop through the context
+     * -count the occerance of string
+     * -stor the most frequent word or keep a record of the most frequent word
+     * 
+     */
+
+    String frequencyWord = null;
+    int totalCount = 0;
+    for (int i = 0; i < context.size(); i++) {
+      String currentWord = context.get(i);
+      int firstCount = 0;
+
+      for (int j = 0; j < context.size(); j++) {
+        if (context.get(j).equals(currentWord)) {
+          firstCount++;
+        }
+      }
+      if (firstCount > totalCount) {
+        totalCount = firstCount;
+        frequencyWord = currentWord;
+      }
+    }
+
+    return frequencyWord;
   }
 
   /**
